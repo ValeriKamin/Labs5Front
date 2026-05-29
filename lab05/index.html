@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Лабораторна робота 5. Task Manager з DOM, подіями та Fetch API">
+    <meta name="author" content="Валерій Студент">
+    <title>Лабораторна робота 5 — Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="container">
+            <p class="eyebrow">Front end (25-26)</p>
+            <h1>Лабораторна робота 5</h1>
+            <p class="subtitle">Task Manager: DOM, події, Fetch API та async/await</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="app-card">
+            <div class="card-header">
+                <div>
+                    <h2>Список завдань</h2>
+                    <p>
+                        Завдання завантажуються з JSONPlaceholder. Можна додавати,
+                        виконувати, видаляти, фільтрувати та шукати завдання.
+                    </p>
+                </div>
+
+                <div class="counter-box">
+                    <span id="activeCount">0</span>
+                    <small>активних</small>
+                </div>
+            </div>
+
+            <form class="task-form" id="taskForm">
+                <label for="taskInput">Нове завдання</label>
+
+                <div class="form-row">
+                    <input
+                        type="text"
+                        id="taskInput"
+                        name="taskInput"
+                        placeholder="Наприклад: повторити DOM"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button type="submit" id="addTaskBtn">Додати</button>
+                </div>
+            </form>
+
+            <div class="tools">
+                <div class="filters" aria-label="Фільтр завдань">
+                    <button class="filter-btn active" type="button" data-filter="all">Всі</button>
+                    <button class="filter-btn" type="button" data-filter="active">Активні</button>
+                    <button class="filter-btn" type="button" data-filter="completed">Виконані</button>
+                </div>
+
+                <div class="search-box">
+                    <label for="searchInput">Пошук</label>
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="Пошук за текстом..."
+                    >
+                </div>
+            </div>
+
+            <div class="message loading hidden" id="loader">
+                Завантаження...
+            </div>
+
+            <div class="message error hidden" id="errorMessage"></div>
+
+            <ul class="task-list" id="taskList"></ul>
+
+            <p class="empty-message hidden" id="emptyMessage">
+                Завдань не знайдено.
+            </p>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Мурзін В. А. Лабораторна робота 5.</p>
+    </footer>
+</body>
+</html>
